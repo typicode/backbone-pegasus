@@ -30,7 +30,7 @@
     "test",
     "tests"
   ],
-  "dependencies": {
+  "devDependencies": {
     "pegasus": "~0.1.2"
   }
 }
