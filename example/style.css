@@ -1,0 +1,50 @@
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  max-width: 960px;
+  padding: 40px;
+  color: #111;
+}
+
+#notice, #app {
+  padding: 40px;
+}
+
+#notice {
+  background: #F1F1F1;
+  color: #5C5C5C;
+}
+
+#notice a {
+  color: #333;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#app {
+  max-width: 960px;
+  margin-top: 0 !important;
+}
+
+#app h1, #app p:first-child {
+  margin-top: 0;
+}
+
+a {
+  color: #666;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 10px 10px 10px 0;
+  border-top: 1px solid #F1F1F1;
+  list-style: none;
+}

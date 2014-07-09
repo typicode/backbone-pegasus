@@ -1,0 +1,36 @@
+{
+  "name": "backbone-pegasus",
+  "version": "0.1.0",
+  "homepage": "https://github.com/typicode/backbone-pegasus",
+  "authors": [
+    "Typicode <typicode@gmail.com>"
+  ],
+  "description": "Load JSON data while loading Backbone and other scripts",
+  "main": "backbone-pegasus.js",
+  "keywords": [
+    "backbone",
+    "xhr",
+    "promise",
+    "data",
+    "json",
+    "bootstrap",
+    "performance",
+    "optimization",
+    "load",
+    "loader",
+    "preload",
+    "preloader",
+    "pegasus"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pegasus": "~0.1.2"
+  }
+}

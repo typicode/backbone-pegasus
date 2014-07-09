@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>backbone-pegasus</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="notice">
+    <p>
+      To see <a href="https://github.com/typicode/backbone-pegasus">backbone-pegasus</a> in action, open your developer tools, go to the network tab, disable cache and reload page.
+    </p>
+
+    <p>
+      You should see that the first xhr request is happening while other scripts are loading (jQuery, Underscore, Backbone, ...).
+    </p>
+
+    <p>
+      <em>Due to the randomness nature of the network, you may need to reload more than once to see it happen.</em>
+    </p>
+  </div>
+
+  <div id="app"></div>
+
+  <!-- backbone-pegasus -->
+  <script src="backbone-pegasus.js"></script>
+  <script>
+
+    // Simple router example
+    //
+    // Maps #:resource/:id to base/:resource/:id
+    //
+    // For example:
+    //
+    //   index.html#posts   will load http://jsonplaceholder.typicode.com/posts
+    //   index.html#posts/1 will load http://jsonplaceholder.typicode.com/posts/1
+    //
+
+    var base     = 'http://jsonplaceholder.typicode.com';
+    var hash     = window.location.hash.split('/');
+    var resource = hash[0].substr(1);
+    var id       = hash.length > 1 ? hash[1] : null;
+
+    if (resource) {
+      BackbonePegasus.get(base + '/' + resource + (id ? '/' + id : '')); 
+    } else {
+      BackbonePegasus.get(base + '/posts');
+    }
+  </script>
+
+  <!-- Libs -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.marionette/1.8.6/backbone.marionette.min.js"></script>
+
+  <!-- Templates -->
+  <script id="posts-template" type="text/html">
+    <h1>Articles</h1>
+    <ul>
+      <% _.each(items, function(item) { %>
+        <li>
+          <a href="#posts/<%= item.id %>"><%= item.title %></a>
+        </li>
+      <% }); %>
+    </ul>
+  </script>
+
+  <script id="post-template" type="text/html">
+    <p>
+      <a href="#posts">Back</a>
+    </p>
+    <h2><%= title %></h2>
+    <div><%= body %></div>
+  </script>
+
+  <!-- App -->
+  <script src="app.js"></script>
+  <script>
+    $(function() {
+      BackbonePegasus.setup();
+      app.start();
+    });
+  </script>
+</body>
+</html>
