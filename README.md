@@ -7,7 +7,7 @@ Using backbone-pegasus, you can start loading data while loading Backbone and ot
 ## Usage
 
 ```html
-<script src="scripts/backbone-pegasus.min.js"></script>
+<script src="backbone-pegasus.js"></script>
 <script>
 
   // Start loading models and collections data
