@@ -61,10 +61,3 @@ switch(window.location.hash) {
 _Another [example](https://github.com/typicode/backbone-pegasus/blob/master/example/index.html#L37) can be found in the example directory._
 
 Or you can use a third-party library like [route-recognizer](https://github.com/tildeio/route-recognizer).
-
-## Build
-
-```bash
-$ bower install && npm install
-$ grunt
-```

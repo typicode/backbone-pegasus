@@ -29,8 +29,5 @@
     "bower_components",
     "test",
     "tests"
-  ],
-  "devDependencies": {
-    "pegasus": "~0.1.2"
-  }
+  ]
 }

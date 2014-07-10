@@ -2,6 +2,11 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     bower: grunt.file.readJSON('bower.json'),
+    shell: {
+      getPegasus: {
+        command: 'bower install pegasus'
+      }
+    },
     concat: {
       dist: {
         src: ['bower_components/pegasus/pegasus.js', 'src/index.js'],
@@ -37,13 +42,14 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('build', ['jshint', 'concat', 'uglify', 'copy']);
+  grunt.registerTask('build', ['jshint', 'shell:getPegasus', 'concat', 'uglify', 'copy']);
   grunt.registerTask('default', 'watch');
 
 };
