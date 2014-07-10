@@ -1,3 +1,6 @@
+//
+// BackbonePegasus
+//
 (function(){
   // Used to store Pegasus requests
   var requests = {};

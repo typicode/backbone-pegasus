@@ -40,6 +40,9 @@ function pegasus(a, xhr) {
   return xhr;
 }
 
+//
+// BackbonePegasus
+//
 (function(){
   // Used to store Pegasus requests
   var requests = {};
