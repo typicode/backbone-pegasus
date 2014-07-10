@@ -48,13 +48,13 @@ var base = 'http://api.example.com';
 
 switch(window.location.hash) {
   case '#posts':
-    BackbonePegasus(base + '/posts');
+    BackbonePegasus.get(base + '/posts');
     break;
   case '#users':
-    BackbonePegasus(base + '/users');
+    BackbonePegasus.get(base + '/users');
     break;
   default:
-    BackbonePegasus(base + '/posts');
+    BackbonePegasus.get(base + '/posts');
 }
 ```
 
