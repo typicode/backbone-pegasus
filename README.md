@@ -35,7 +35,9 @@ Using backbone-pegasus, you can start loading data while loading Backbone and ot
 </script>
 ```
 
-There's nothing else to change in your app.
+__There's nothing else to change in your app__ and you don't even have to use backbone-pegasus for all your URLs. 
+
+In fact, if a model or collection requests an URL that wasn't loaded by backbone-pegasus, it simply falls back to making the request using Backbone.
 
 ## Routing
 
@@ -60,4 +62,4 @@ switch(window.location.hash) {
 
 _Another [example](https://github.com/typicode/backbone-pegasus/blob/master/example/index.html#L37) can be found in the example directory._
 
-Or you can use a third-party library like [route-recognizer](https://github.com/tildeio/route-recognizer).
+You can also use a third-party library like [route-recognizer](https://github.com/tildeio/route-recognizer).
