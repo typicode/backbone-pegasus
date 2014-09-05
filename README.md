@@ -39,6 +39,16 @@ __There's nothing else to change in your app__ and you don't even have to use ba
 
 In fact, if a model or collection requests an URL that wasn't loaded by backbone-pegasus, it simply falls back to making the request using Backbone.
 
+## Example
+
+You can find a working app in the example directory and this is what you should get.
+
+![screenshot](http://i.imgur.com/gT3DR18.png)
+
+Obviously, in production you should concatenate your app scripts. However, what's important in this picture is that your data (the yellow bar) is being loaded while still loading the other scripts.
+
+Without server-side data bootstrapping or rendering, you would have to wait for all the scripts to load before starting to load data.
+
 ## Routing
 
 To keep things light and fast, backbone-pegasus doesn't come with a router.
