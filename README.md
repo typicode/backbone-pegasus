@@ -43,7 +43,7 @@ In fact, if a model or collection requests an URL that wasn't loaded by backbone
 
 You can find a working app in the example directory and this is what you should get.
 
-![screenshot](http://i.imgur.com/gT3DR18.png)
+![](http://i.imgur.com/gT3DR18.png)
 
 Obviously, in production you should concatenate your app scripts. However, what's important in this screenshot is that your data (the yellow bar) is being loaded while still loading the other scripts.
 
