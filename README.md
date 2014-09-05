@@ -45,7 +45,7 @@ You can find a working app in the example directory and this is what you should 
 
 ![screenshot](http://i.imgur.com/gT3DR18.png)
 
-Obviously, in production you should concatenate your app scripts. However, what's important in this picture is that your data (the yellow bar) is being loaded while still loading the other scripts.
+Obviously, in production you should concatenate your app scripts. However, what's important in this screenshot is that your data (the yellow bar) is being loaded while still loading the other scripts.
 
 Without server-side data bootstrapping or rendering, you would have to wait for all the scripts to load before starting to load data.
 
