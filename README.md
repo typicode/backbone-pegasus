@@ -45,9 +45,12 @@ You can find a working app in the example directory and this is what you should 
 
 ![](http://i.imgur.com/gT3DR18.png)
 
-Obviously, in production you should concatenate your app scripts. However, what's important in this screenshot is that your data (the yellow bar) is being loaded while still loading the other scripts.
+Obviously, in production you should concatenate your app scripts. However, what's important in this screenshot is that your data (the yellow bar) is being loaded:
 
-Without server-side data bootstrapping or rendering, you would have to wait for all the scripts to load before starting to load data.
+* as soon as backbone-pegasus has finished loading
+* while still loading the other scripts.
+
+See also http://typicode.github.io/pegasus/ for other live examples of Pegasus.
 
 ## Routing
 
