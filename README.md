@@ -59,7 +59,7 @@ But depending on your needs, you can write your own:
 ```javascript
 var base = 'http://api.example.com';
 
-// Will preload URLs depending on hash
+// Will preload URLs based on hash
 switch(window.location.hash) {
   case '#posts':
     BackbonePegasus.get(base + '/posts');
