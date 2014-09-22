@@ -48,7 +48,7 @@ See also http://typicode.github.io/pegasus/ for other live examples.
 
 __There's nothing else to change in your app.__
 
-`BackbonePegasus.setup()` modifies `Backbone.sync()` so that it check for URLs loaded by backbone-pegasus. If there's no match, it falls back to `Backbone.sync()` original method.
+`BackbonePegasus.setup()` modifies `Backbone.sync()` so that it checks for URLs loaded by backbone-pegasus. If there's no match, it falls back to `Backbone.sync()` original method.
 
 ## Routing
 
