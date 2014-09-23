@@ -1,4 +1,4 @@
-# backbone-pegasus [![Bower version](https://badge.fury.io/bo/backbone-pegasus.svg)](http://badge.fury.io/bo/backbone-pegasus)
+# backbone-pegasus ![Bower version](http://img.shields.io/badge/bower%20package-0.1.3-brightgreen.svg?style=flat)
 
 > Improve your Backbone app loading time with [Pegasus](https://github.com/typicode/pegasus).
 
