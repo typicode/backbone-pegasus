@@ -1,46 +1,4 @@
 //
-// Disclaimer: using byte saving techniques
-//
-// a   url (naming it a, beacause it will be reused to store callbacks)
-// xhr placeholder to avoid using var
-function pegasus(a, xhr) {
-  xhr = new XMLHttpRequest();
-  
-  // Open url
-  xhr.open('GET', a);
-
-  // Reuse a to store callbacks
-  a = [];
-
-  // cb placeholder to avoid using var
-  xhr.onreadystatechange = xhr.then = function(onSuccess, onError, cb) {
-
-    // Test if onSuccess is a function or a load event
-    if (onSuccess.call) a = [,onSuccess, onError];
-
-    // Test if request is complete
-    if (xhr.readyState == 4) {
-
-      // index will be:
-      // 0 if undefined
-      // 1 if status is between 200 and 399
-      // 2 if status is over
-      cb = a[0|xhr.status / 200];
-
-      // Safari doesn't support xhr.responseType = 'json'
-      // so the response is parsed
-      if (cb) cb(JSON.parse(xhr.responseText, xhr));
-    }
-  };
-
-  // Send
-  xhr.send();
-
-  // Return request
-  return xhr;
-}
-
-//
 // BackbonePegasus
 //
 (function(){
@@ -85,21 +43,26 @@ function pegasus(a, xhr) {
             // Backbone original sync method
             delete requests[url];
 
-            // Fill with returned data
             var method = options.reset ? 'reset' : 'set';
             model[method](data);
 
-            // Trigger sync event
+            if (options && options.success) {
+              options.success(model, data, options);
+            }
+
             model.trigger('sync', model, data, options);
           },
           // Error
           function(data) {
+            if (options && options.error) {
+              options.error(model, data, options);
+            }
+
             model.trigger('error', model, data, options);
           }
         );
 
       } else {
-        
         // No request found for URL, use the original sync method
         BackboneSync(method, model, options);
       }

@@ -43,21 +43,26 @@
             // Backbone original sync method
             delete requests[url];
 
-            // Fill with returned data
             var method = options.reset ? 'reset' : 'set';
             model[method](data);
 
-            // Trigger sync event
+            if (options && options.success) {
+              options.success(model, data, options);
+            }
+
             model.trigger('sync', model, data, options);
           },
           // Error
           function(data) {
+            if (options && options.error) {
+              options.error(model, data, options);
+            }
+
             model.trigger('error', model, data, options);
           }
         );
 
       } else {
-        
         // No request found for URL, use the original sync method
         BackboneSync(method, model, options);
       }
