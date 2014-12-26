@@ -9,8 +9,8 @@ module.exports = function(grunt) {
     },
     concat: {
       dist: {
-        src: ['bower_components/pegasus/pegasus.js', 'src/index.js'],
-        dest: '<%= bower.name %>.js'
+        src: ['bower_components/pegasus/dist/pegasus.js', 'src/index.js'],
+        dest: 'dist/<%= bower.name %>.js'
       }
     },
     uglify: {
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          '<%= bower.name %>.min.js': '<%= bower.name %>.js'
+          'dist/<%= bower.name %>.min.js': 'dist/<%= bower.name %>.js'
         }
       }
     },
@@ -36,7 +36,9 @@ module.exports = function(grunt) {
     },
     copy: {
       main: {
-        src: ['<%= bower.name %>.js', '<%= bower.name %>.min.js'],
+        expand: true,
+        flatten: true,
+        src: ['dist/<%= bower.name %>.js', 'dist/<%= bower.name %>.min.js'],
         dest: 'example/'
       }
     }

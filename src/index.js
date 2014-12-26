@@ -31,11 +31,8 @@
     }
 
     if (method === 'read' && url) {
-
       var request = requests[url];
-
       if (request) {
-
         request.then(
           // Success
           function(data) {
@@ -47,31 +44,28 @@
             model[method](data);
 
             if (options && options.success) {
-              options.success(model, data, options);
+              options.success(data);
             }
 
             model.trigger('sync', model, data, options);
           },
           // Error
-          function(data) {
+          function(data, xhr) {
             if (options && options.error) {
-              options.error(model, data, options);
+              options.error(xhr);
             }
 
-            model.trigger('error', model, data, options);
+            model.trigger('error', model, xhr, options);
           }
         );
-
+        return request;
       } else {
         // No request found for URL, use the original sync method
-        BackboneSync(method, model, options);
+        return BackboneSync(method, model, options);
       }
-
     } else {
-
       // Not a GET or no URL, use the original sync method
-      BackboneSync(method, model, options);
-
+      return BackboneSync(method, model, options);
     }
   }
 

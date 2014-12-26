@@ -41,7 +41,7 @@
     var id       = hash.length > 1 ? hash[1] : null;
 
     if (resource) {
-      BackbonePegasus.get(base + '/' + resource + (id ? '/' + id : '')); 
+      BackbonePegasus.get(base + '/' + resource + (id ? '/' + id : ''));
     } else {
       BackbonePegasus.get(base + '/posts');
     }

@@ -1,3 +1,49 @@
+// a   url (naming it a, beacause it will be reused to store callbacks)
+// xhr placeholder to avoid using var, not to be used
+function pegasus(a, xhr) {
+  xhr = new XMLHttpRequest();
+
+  // Open url
+  xhr.open('GET', a);
+
+  // Reuse a to store callbacks
+  a = [];
+
+  // onSuccess handler
+  // onError   handler
+  // cb        placeholder to avoid using var, should not be used
+  xhr.onreadystatechange = xhr.then = function(onSuccess, onError, cb) {
+
+    // Test if onSuccess is a function or a load event
+    if (onSuccess.call) a = [,onSuccess, onError];
+
+    // Test if request is complete
+    if (xhr.readyState == 4) {
+
+      // index will be:
+      // 0 if undefined
+      // 1 if status is between 200 and 399
+      // 2 if status is over
+      cb = a[0|xhr.status / 200];
+
+      // Safari doesn't support xhr.responseType = 'json'
+      // so the response is parsed
+      if (cb) {
+        try {
+          cb(JSON.parse(xhr.responseText), xhr);
+        } catch (e) {
+          cb(null, xhr);
+        }
+      }
+    }
+  };
+
+  // Send
+  xhr.send();
+
+  // Return request
+  return xhr;
+}
 //
 // BackbonePegasus
 //
@@ -31,11 +77,8 @@
     }
 
     if (method === 'read' && url) {
-
       var request = requests[url];
-
       if (request) {
-
         request.then(
           // Success
           function(data) {
@@ -47,31 +90,28 @@
             model[method](data);
 
             if (options && options.success) {
-              options.success(model, data, options);
+              options.success(data);
             }
 
             model.trigger('sync', model, data, options);
           },
           // Error
-          function(data) {
+          function(data, xhr) {
             if (options && options.error) {
-              options.error(model, data, options);
+              options.error(xhr);
             }
 
-            model.trigger('error', model, data, options);
+            model.trigger('error', model, xhr, options);
           }
         );
-
+        return request;
       } else {
         // No request found for URL, use the original sync method
-        BackboneSync(method, model, options);
+        return BackboneSync(method, model, options);
       }
-
     } else {
-
       // Not a GET or no URL, use the original sync method
-      BackboneSync(method, model, options);
-
+      return BackboneSync(method, model, options);
     }
   }
 

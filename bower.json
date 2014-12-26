@@ -6,7 +6,7 @@
     "Typicode <typicode@gmail.com>"
   ],
   "description": "Load JSON data while loading Backbone and other scripts",
-  "main": "backbone-pegasus.js",
+  "main": "dist/backbone-pegasus.js",
   "keywords": [
     "backbone",
     "xhr",
