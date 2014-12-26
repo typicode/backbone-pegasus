@@ -1,4 +1,4 @@
-# backbone-pegasus ![Bower version](http://img.shields.io/badge/bower%20package-0.1.3-brightgreen.svg?style=flat)
+# backbone-pegasus ![Bower](https://img.shields.io/bower/v/backbone-pegasus.svg?style=flat)]
 
 > Improve your Backbone app loading time with [Pegasus](https://github.com/typicode/pegasus).
 
@@ -78,4 +78,4 @@ You can also use a third-party library like [route-recognizer](https://github.co
 
 ## Support
 
-All modern browsers and IE7+
+All modern browsers and IE8+
